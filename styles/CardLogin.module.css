@@ -1,0 +1,29 @@
+.CardLogin {
+  margin: 30px auto;
+  background: rgba(255, 255, 255, 0.25);
+  border: 1.5px solid #ffffff;
+  box-sizing: border-box;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  height: 699px;
+}
+
+.CardLogin_Button {
+  color: white;
+  border-color: white;
+  padding: 10px 70px;
+  font-size: 24px;
+}
+
+.CardLogin_Button:focus {
+  background-color: white;
+  color: black;
+}
+
+.CardLogin_Button:hover {
+  background-color: rgba(255, 255, 255, 20%);
+  color: white;
+}
