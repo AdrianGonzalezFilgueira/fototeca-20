@@ -1,7 +1,5 @@
 import styles from "../styles/Footer.module.css";
 
-function Footer() {
+export default function Footer() {
   return <footer className={styles.Footer}> SOY EL FOOTER</footer>;
 }
-
-export default Footer;

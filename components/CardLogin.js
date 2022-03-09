@@ -7,7 +7,7 @@ import {
   ToggleButtonGroup,
 } from "@mui/material";
 
-function FrameLogin() {
+export default function FrameLogin() {
   const [alignment, setAlignment] = useState("login");
 
   const handleChange = (event, newAlignment) => {
@@ -18,11 +18,15 @@ function FrameLogin() {
     <Container maxWidth="sm">
       <Card className={styles.CardLogin} variant="outlined">
         <ToggleButtonGroup value={alignment} exclusive onChange={handleChange}>
-          <ToggleButton className={styles.CardLogin_Button} sx={{
+          <ToggleButton
+            className={styles.CardLogin_Button}
+            sx={{
               "&.Mui-selected": {
-                backgroundColor: "white"
+                backgroundColor: "white",
               },
-              }} value="login">
+            }}
+            value="login"
+          >
             Login
           </ToggleButton>
           <ToggleButton className={styles.CardLogin_Button} value="signup">
@@ -33,5 +37,3 @@ function FrameLogin() {
     </Container>
   );
 }
-
-export default FrameLogin;

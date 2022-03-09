@@ -1,9 +1,8 @@
 import styles from "../styles/Navbar.module.css";
 import { Divider } from "@mui/material";
 import Title from "./Title";
-import { GlobalStyles } from "@mui/styled-engine";
 
-function Navbar() {
+export default function Navbar() {
   return (
     <>
       <Title />
@@ -11,5 +10,3 @@ function Navbar() {
     </>
   );
 }
-
-export default Navbar;

@@ -1,12 +1,10 @@
 import styles from "../styles/Login.module.css";
 import FrameLogin from "../components/CardLogin";
 
-function login() {
+export default function LoginPage() {
   return (
     <div className="mainDiv">
       <FrameLogin />
     </div>
   );
 }
-
-export default login;

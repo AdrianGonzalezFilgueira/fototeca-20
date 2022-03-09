@@ -1,5 +1,3 @@
-function main() {
+export default function HomePage() {
   return <div className="main">HOLA</div>;
 }
-
-export default main;

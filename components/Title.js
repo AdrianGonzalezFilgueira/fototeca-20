@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 
-function Title() {
+export default function Title() {
   return (
     <Typography
       padding="30px"
@@ -14,5 +14,3 @@ function Title() {
     </Typography>
   );
 }
-
-export default Title;
