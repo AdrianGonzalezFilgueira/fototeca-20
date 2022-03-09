@@ -18,7 +18,11 @@ function FrameLogin() {
     <Container maxWidth="sm">
       <Card className={styles.CardLogin} variant="outlined">
         <ToggleButtonGroup value={alignment} exclusive onChange={handleChange}>
-          <ToggleButton className={styles.CardLogin_Button} value="login">
+          <ToggleButton className={styles.CardLogin_Button} sx={{
+              "&.Mui-selected": {
+                backgroundColor: "white"
+              },
+              }} value="login">
             Login
           </ToggleButton>
           <ToggleButton className={styles.CardLogin_Button} value="signup">
