@@ -6,6 +6,7 @@ import {
   ToggleButton,
   ToggleButtonGroup,
 } from "@mui/material";
+import ButtonSubmit from "./ButtonSubmit";
 
 export default function FrameLogin() {
   const [alignment, setAlignment] = useState("login");
@@ -33,6 +34,7 @@ export default function FrameLogin() {
             Sign Up
           </ToggleButton>
         </ToggleButtonGroup>
+        <ButtonSubmit>Ingresar</ButtonSubmit>
       </Card>
     </Container>
   );
