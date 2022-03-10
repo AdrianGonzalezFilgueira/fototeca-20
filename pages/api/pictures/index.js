@@ -1,17 +1,18 @@
 import dbConnect from "../../../lib/dbConnect";
 import Picture from "../../../models/picture";
+import handler from "../../../lib/handler";
 
-export default async function handler(req, res) {
-  await dbConnect();
-
-  if (req.method === "GET") {
+export default handler
+  .get(async (req, res) => {
+    await dbConnect();
     try {
       const pictures = await Picture.find();
       res.status(200).json({ pictures });
     } catch (error) {
       res.status(400).json({ error });
     }
-  } else if (req.method === "POST") {
+  })
+  .post(async (req, res) => {
     try {
       const { title, description, image } = req.body;
 
@@ -22,5 +23,4 @@ export default async function handler(req, res) {
       console.log(error);
       res.status(400).json({ error });
     }
-  }
-}
+  });
