@@ -1,19 +1,18 @@
 import { Types } from "mongoose";
 import dbConnect from "../../../lib/dbConnect";
 import Picture from "../../../models/picture";
+import handler from "../../../lib/handler";
 
-export default async function handler(req, res) {
-  await dbConnect();
-
-  const { id } = req.query;
-
-  if (!Types.ObjectId.isValid(id)) {
-    res.status(400).json({ message: "La ID es incorrecta." });
-    return;
-  }
-
-  if (req.method === "GET") {
+export default handler
+  .get(async (req, res) => {
     try {
+      await dbConnect();
+      const { id } = req.query;
+
+      if (!Types.ObjectId.isValid(id)) {
+        res.status(400).json({ message: "La ID es incorrecta." });
+        return;
+      }
       const picture = await Picture.findById({ _id: id });
 
       if (!picture) {
@@ -27,8 +26,16 @@ export default async function handler(req, res) {
     } catch (error) {
       res.status(400).json({ error });
     }
-  } else if (req.method === "DELETE") {
+  })
+  .delete(async (req, res) => {
     try {
+      await dbConnect();
+      const { id } = req.query;
+
+      if (!Types.ObjectId.isValid(id)) {
+        res.status(400).json({ message: "La ID es incorrecta." });
+        return;
+      }
       const picture = await Picture.deleteOne({ _id: id });
 
       if (picture.deletedCount === 0) {
@@ -40,5 +47,4 @@ export default async function handler(req, res) {
     } catch (error) {
       res.status(400).json({ error });
     }
-  }
-}
+  });
