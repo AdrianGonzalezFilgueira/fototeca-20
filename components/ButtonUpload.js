@@ -6,7 +6,7 @@ const Input = styled("input")({
   display: "none",
 });
 
-export default function UploadButton() {
+export default function ButtonUpload() {
   return (
     <label htmlFor="contained-button-file">
       <Input accept="image/*" id="contained-button-file" multiple type="file" />
