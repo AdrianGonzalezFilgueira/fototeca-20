@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import ButtonSubmit from "./ButtonSubmit";
 
-export default function FrameLogin() {
+export default function CardLogin() {
   const [alignment, setAlignment] = useState("login");
 
   const handleChange = (event, newAlignment) => {
