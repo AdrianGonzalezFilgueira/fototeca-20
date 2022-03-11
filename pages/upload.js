@@ -12,17 +12,14 @@ import ButtonSubmit from "../components/ButtonSubmit";
 export default function UploadPage() {
   const [date, setDate] = useState(new Date());
   const { register, handleSubmit } = useForm();
-  const onSubmit = (d) => alert(JSON.stringify(d));
   const formRef = useRef();
-  const fileRef = useRef();
-  //console.log(fileRef.current);
-  //Devuelve el formulario
-  //   console.log(formRef.current);
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log(formRef.current);
-  // };
+  const onSubmit = (data) => {
+    console.log(data.title);
+    console.log(data.description);
+    console.log(data.uploader);
+    console.log(date); // MUI Calendar
+  };
 
   return (
     <div className="mainDiv">
@@ -36,7 +33,7 @@ export default function UploadPage() {
               justifyContent="center"
               alignItems="center"
             >
-              <ButtonUpload fileRef={fileRef} name={register("file")} />
+              <ButtonUpload register={register} />
             </Grid>
             <Grid item xs={5}>
               <Grid item>

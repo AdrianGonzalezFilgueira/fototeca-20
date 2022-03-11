@@ -6,12 +6,12 @@ const Input = styled("input")({
   display: "none",
 });
 
-export default function ButtonUpload({ name, fileRef }) {
+export default function ButtonUpload({ register }) {
   return (
     <label htmlFor="contained-button-file">
       <Input
-        {...name}
-        ref={fileRef}
+        {...register("uploader", { required: true })}
+        name="upload"
         accept="image/*"
         id="contained-button-file"
         multiple
