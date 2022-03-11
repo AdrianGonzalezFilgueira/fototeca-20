@@ -1,9 +1,9 @@
 import { Button } from "@mui/material";
 
-export default function ButtonSubmit({children}) {
+export default function ButtonSubmit({ children }) {
   return (
-    <Button variant="contained" component="span">
-        {children}
+    <Button type="submit" variant="contained" component="button">
+      {children}
     </Button>
   );
 }

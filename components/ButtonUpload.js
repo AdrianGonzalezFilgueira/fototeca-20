@@ -6,10 +6,17 @@ const Input = styled("input")({
   display: "none",
 });
 
-export default function ButtonUpload() {
+export default function ButtonUpload({ name, fileRef }) {
   return (
     <label htmlFor="contained-button-file">
-      <Input accept="image/*" id="contained-button-file" multiple type="file" />
+      <Input
+        {...name}
+        ref={fileRef}
+        accept="image/*"
+        id="contained-button-file"
+        multiple
+        type="file"
+      />
       <Button variant="contained" component="span">
         <AddIcon sx={{ fontSize: 600 }} />
       </Button>
