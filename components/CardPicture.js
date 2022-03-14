@@ -3,7 +3,7 @@ import {
   CardActionArea,
   CardContent,
   CardMedia,
-  Typography,
+  Typography
 } from "@mui/material";
 
 export default function CardPicture({ picture }) {

@@ -1,7 +1,7 @@
 import ButtonUpload from "../components/ButtonUpload";
 import TextField from "@mui/material/TextField";
 import CalendarPicker from "@mui/lab/CalendarPicker";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { LocalizationProvider } from "@mui/lab";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
@@ -20,20 +20,21 @@ export default function UploadPage() {
     console.log(data.uploader);
     console.log(date); // MUI Calendar
     console.log(data);
-      const postPicture = async () => {
-      await fetch(
-        "api/pictures", {
+    const postPicture = async () => {
+      await fetch("api/pictures", {
         method: "POST",
         headers: {
           Accept: "application/json",
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
           //'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: JSON.stringify({title: data.title, description: data.description})
-      }
-      )
-    }
-    postPicture() 
+        body: JSON.stringify({
+          title: data.title,
+          description: data.description,
+        }),
+      });
+    };
+    postPicture();
   };
 
   return (
@@ -53,7 +54,7 @@ export default function UploadPage() {
             <Grid item xs={5}>
               <Grid item>
                 <TextField
-                  {...register("title", {minLength: 1, maxLength: 100})}
+                  {...register("title", { minLength: 1, maxLength: 100 })}
                   id="outlined-basic"
                   label="Título"
                   variant="outlined"
@@ -62,7 +63,7 @@ export default function UploadPage() {
               </Grid>
               <Grid item>
                 <TextField
-                  {...register("description", {minLength: 1, maxLength: 250})}
+                  {...register("description", { minLength: 1, maxLength: 250 })}
                   id="outlined-multiline-static"
                   label="Descripción"
                   variant="outlined"
