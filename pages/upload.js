@@ -1,40 +1,39 @@
 import ButtonUpload from "../components/ButtonUpload";
 import TextField from "@mui/material/TextField";
-import CalendarPicker from "@mui/lab/CalendarPicker";
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import { useForm } from "react-hook-form";
-import { LocalizationProvider } from "@mui/lab";
-import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import ButtonSubmit from "../components/ButtonSubmit";
+import axios from "axios";
 
 export default function UploadPage() {
-  const [date, setDate] = useState(new Date());
   const { register, handleSubmit } = useForm();
   const formRef = useRef();
 
-  const onSubmit = (data) => {
-    console.log(data.title);
-    console.log(data.description);
-    console.log(data.uploader);
-    console.log(date); // MUI Calendar
-    console.log(data);
-    const postPicture = async () => {
-      await fetch("api/pictures", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          //'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: JSON.stringify({
-          title: data.title,
-          description: data.description,
-        }),
+  const onSubmit = async (data) => {
+    const formData = new FormData();
+    formData.append("title", data.title);
+    formData.append("description", data.description);
+    formData.append("picture", data.picture[0]);
+
+    await axios
+      .post("api/pictures", formData)
+      .then((res) => {
+        /**
+         * En caso de que todo haya ido bien, informar al usuario.
+         * El mensaje de feedback está en: res.data.message
+         */
+        console.log(res.data.message);
+      })
+      .catch((error) => {
+        /**
+         * En caso de que se trate de subir un archivo incorrecto,
+         * demasiado grande u otro error, informar al usuario.
+         * El mensaje de feedback está en: error.response.data.message
+         */
+        console.log(error.response.data.message);
       });
-    };
-    postPicture();
   };
 
   return (
@@ -71,14 +70,6 @@ export default function UploadPage() {
                   rows={5}
                   fullWidth
                 />
-              </Grid>
-              <Grid item>
-                <LocalizationProvider dateAdapter={AdapterDateFns}>
-                  <CalendarPicker
-                    date={date}
-                    onChange={(newDate) => setDate(newDate)}
-                  />
-                </LocalizationProvider>
               </Grid>
             </Grid>
             <Grid container justifyContent="flex-end" item xs={11}>

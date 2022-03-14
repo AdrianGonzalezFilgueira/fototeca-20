@@ -1,7 +1,7 @@
 import dbConnect from "../../../lib/dbConnect";
 import Picture from "../../../models/picture";
 import handler from "../../../lib/handler";
-import upload from "../../../lib/upload";
+import upload from "../../../lib/multer";
 
 export const config = {
   api: {
@@ -11,23 +11,27 @@ export const config = {
 
 export default handler
   .get(async (req, res) => {
-    await dbConnect();
     try {
+      await dbConnect();
       const pictures = await Picture.find();
       res.status(200).json({ pictures });
     } catch (error) {
       res.status(400).json({ error });
     }
   })
-  .use(upload.single("file_upload"))
+  .use(upload.single("picture"))
   .post(async (req, res) => {
     try {
-      console.log(req.body);
+      await dbConnect();
       const { title, description } = req.body;
 
-      await Picture.create({ title, description });
+      await Picture.create({
+        title,
+        description,
+        pictureName: req.file.filename,
+      });
 
-      res.status(201).json({ message: "Foto subida correctamente." });
+      res.status(201).json({ message: "Imagen subida correctamente." });
     } catch (error) {
       console.log(error);
       res.status(400).json({ error });

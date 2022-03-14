@@ -10,11 +10,10 @@ export default function ButtonUpload({ register }) {
   return (
     <label htmlFor="contained-button-file">
       <Input
-        {...register("uploader", { required: true })}
-        name="upload"
+        {...register("picture", { required: true })}
+        name="picture"
         accept="image/*"
         id="contained-button-file"
-        multiple
         type="file"
       />
       <Button variant="contained" component="span">

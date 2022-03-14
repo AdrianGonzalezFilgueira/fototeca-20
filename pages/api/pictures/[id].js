@@ -10,19 +10,19 @@ export default handler
       const { id } = req.query;
 
       if (!Types.ObjectId.isValid(id)) {
-        res.status(400).json({ message: "La ID es incorrecta." });
+        res.status(400).json({ message: "La ID de la imagen es incorrecta." });
         return;
       }
-      const picture = await Picture.findById({ _id: id });
+      const data = await Picture.findById({ _id: id });
 
-      if (!picture) {
-        res.status(404).json({ message: "Foto no encontrada." });
+      if (!data) {
+        res.status(404).json({ message: "Imagen no encontrada." });
         return;
       }
 
-      const { title, description, image } = picture;
+      const { title, description, picture } = data;
 
-      res.status(200).json({ title, description, image });
+      res.status(200).json({ title, description, picture });
     } catch (error) {
       res.status(400).json({ error });
     }
@@ -36,14 +36,14 @@ export default handler
         res.status(400).json({ message: "La ID es incorrecta." });
         return;
       }
-      const picture = await Picture.deleteOne({ _id: id });
+      const data = await Picture.deleteOne({ _id: id });
 
-      if (picture.deletedCount === 0) {
-        res.status(404).json({ message: "Foto no encontrada." });
+      if (data.deletedCount === 0) {
+        res.status(404).json({ message: "Imagen no encontrada." });
         return;
       }
 
-      res.status(200).json({ message: "Foto borrada correctamente." });
+      res.status(200).json({ message: "Imagen borrada correctamente." });
     } catch (error) {
       res.status(400).json({ error });
     }
