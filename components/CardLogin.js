@@ -3,10 +3,10 @@ import styles from "../styles/CardLogin.module.css";
 import {
   Container,
   Card,
-  ToggleButton,
   ToggleButtonGroup,
 } from "@mui/material";
 import ButtonSubmit from "./ButtonSubmit";
+import CreatedToggleButton from "./ToggleButton";
 
 export default function CardLogin() {
   const [alignment, setAlignment] = useState("login");
@@ -16,23 +16,19 @@ export default function CardLogin() {
   };
 
   return (
-    <Container maxWidth="sm">
-      <Card className={styles.CardLogin} variant="outlined">
+    <Container maxWidth="sm" >
+      <Card className={styles.CardLogin} variant="outlined" sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        margin: "30px auto",
+        background: "rgba(255, 255, 255, 0.25)",
+        borderColor: "white",
+        boxSizing: "border-box",
+        borderRadius: "10px"}}>
         <ToggleButtonGroup value={alignment} exclusive onChange={handleChange}>
-          <ToggleButton
-            className={styles.CardLogin_Button}
-            sx={{
-              "&.Mui-selected": {
-                backgroundColor: "white",
-              },
-            }}
-            value="login"
-          >
-            Login
-          </ToggleButton>
-          <ToggleButton className={styles.CardLogin_Button} value="signup">
-            Sign Up
-          </ToggleButton>
+          <CreatedToggleButton value="login">Login</CreatedToggleButton>
+          <CreatedToggleButton value="signup">Sign up</CreatedToggleButton>
         </ToggleButtonGroup>
         <ButtonSubmit>Ingresar</ButtonSubmit>
       </Card>
