@@ -5,10 +5,13 @@ export default function Navbar() {
   return (
     <>
       <Title />
-      <Divider style={{
-        backgroundColor: "white",
-        margin: "0 4%"
-        }} variant="middle" />
+      <Divider
+        style={{
+          backgroundColor: "white",
+          margin: "0 4%",
+        }}
+        variant="middle"
+      />
     </>
   );
 }

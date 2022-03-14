@@ -5,28 +5,27 @@ import {
   ToggleButtonGroup,
   ToggleButton,
 } from "@mui/material";
-import { styled } from '@mui/material/styles';
+import { styled } from "@mui/material/styles";
 import ButtonSubmit from "./ButtonSubmit";
 import InputText from "./TextInput";
-import PasswordInput from "./PasswordInput";
 
-
-const LoginButton = styled(ToggleButton)(({theme}) => ({
+const LoginButton = styled(ToggleButton)({
   "&.Mui-selected": {
-  backgroundColor: "white",},
+    backgroundColor: "white",
+  },
   color: "white",
   borderColor: "white",
   padding: "10px 70px",
   fontSize: "24px",
   ":hover": {
     backgroundColor: "rgba(255, 255, 255, 20%)",
-    color: "white"
+    color: "white",
   },
   ":focus": {
     backgroundColor: "white",
-    color: "black"
+    color: "black",
   },
-}));
+});
 
 export default function CardLogin() {
   const [alignment, setAlignment] = useState("login");
@@ -36,26 +35,29 @@ export default function CardLogin() {
   };
 
   return (
-    <Container maxWidth="sm" >
-      <Card variant="outlined" sx={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "column",
-        gap: "20px",
-        margin: "30px auto",
-        background: "rgba(255, 255, 255, 0.25)",
-        borderColor: "white",
-        boxSizing: "border-box",
-        borderRadius: "10px",
-        py: 3
-    }}>
+    <Container maxWidth="sm">
+      <Card
+        variant="outlined"
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+          gap: "20px",
+          my: 10,
+          py: 3,
+          background: "rgba(255, 255, 255, 0.25)",
+          borderColor: "white",
+          boxSizing: "border-box",
+          borderRadius: "10px",
+        }}
+      >
         <ToggleButtonGroup value={alignment} exclusive onChange={handleChange}>
           <LoginButton value="login">Login</LoginButton>
           <LoginButton value="signup">Sign up</LoginButton>
         </ToggleButtonGroup>
-        <InputText title="USUARIO"  />
-        <InputText title="CONTRASEÑA"  />
+        <InputText title="USUARIO" />
+        <InputText title="CONTRASEÑA" />
         <ButtonSubmit>Ingresar</ButtonSubmit>
       </Card>
     </Container>
