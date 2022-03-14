@@ -7,6 +7,9 @@ import {
 } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import ButtonSubmit from "./ButtonSubmit";
+import InputText from "./TextInput";
+import PasswordInput from "./PasswordInput";
+
 
 const LoginButton = styled(ToggleButton)(({theme}) => ({
   "&.Mui-selected": {
@@ -38,18 +41,21 @@ export default function CardLogin() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        flexDirection: "column",
+        gap: "20px",
         margin: "30px auto",
         background: "rgba(255, 255, 255, 0.25)",
         borderColor: "white",
         boxSizing: "border-box",
         borderRadius: "10px",
-        width: "600px",
-        height: "699px"
+        py: 3
     }}>
         <ToggleButtonGroup value={alignment} exclusive onChange={handleChange}>
           <LoginButton value="login">Login</LoginButton>
           <LoginButton value="signup">Sign up</LoginButton>
         </ToggleButtonGroup>
+        <InputText title="USUARIO"  />
+        <InputText title="CONTRASEÑA"  />
         <ButtonSubmit>Ingresar</ButtonSubmit>
       </Card>
     </Container>
