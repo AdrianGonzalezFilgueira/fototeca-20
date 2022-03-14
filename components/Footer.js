@@ -1,5 +1,3 @@
-import styles from "../styles/Footer.module.css";
-
 export default function Footer() {
-  return <footer className={styles.Footer}> SOY EL FOOTER</footer>;
+  return <footer style={{backgroundColor: "white"}}> SOY EL FOOTER</footer>;
 }
