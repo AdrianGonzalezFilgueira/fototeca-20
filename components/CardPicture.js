@@ -6,7 +6,7 @@ import {
   Typography,
 } from "@mui/material";
 
-export default function CardPicture({ user }) {
+export default function CardPicture({ picture }) {
   return (
     <div>
       <Card sx={{ maxWidth: 345 }}>
@@ -14,15 +14,15 @@ export default function CardPicture({ user }) {
           <CardMedia
             component="img"
             height="140"
-            image={user.image}
-            alt={user.title}
+            image={picture.image}
+            alt={picture.title}
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              {user.title}
+              {picture.title}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              {user.description}
+              {picture.description}
             </Typography>
           </CardContent>
         </CardActionArea>
