@@ -22,6 +22,7 @@ export default handler
   .use(upload.single("file_upload"))
   .post(async (req, res) => {
     try {
+      console.log(req.body);
       const { title, description } = req.body;
 
       await Picture.create({ title, description });
