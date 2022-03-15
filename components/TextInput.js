@@ -24,7 +24,7 @@ export default function InputText(props) {
       >
         {props.title}
       </InputLabel>
-      <TextInput id={props.title} />
+      <TextInput type={props.type} id={props.title} />
     </div>
   );
 }

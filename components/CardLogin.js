@@ -7,8 +7,8 @@ import GoogleIcon from "@mui/icons-material/Google";
 export default function CardLogin() {
   return (
     <>
-      <InputText title="USUARIO" />
-      <InputText title="CONTRASEÑA" />
+      <InputText type="text" title="USUARIO" />
+      <InputText type="password" title="CONTRASEÑA" />
       <Button variant="contained" endIcon={<GoogleIcon />}>
         Login with
       </Button>
