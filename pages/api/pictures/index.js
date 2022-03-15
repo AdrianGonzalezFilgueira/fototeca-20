@@ -28,7 +28,7 @@ export default handler
       await Picture.create({
         title,
         description,
-        pictureName: req.file.filename,
+        url: req.file.filename,
       });
 
       res.status(201).json({ message: "Imagen subida correctamente." });

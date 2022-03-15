@@ -3,7 +3,7 @@ import {
   CardActionArea,
   CardContent,
   CardMedia,
-  Typography
+  Typography,
 } from "@mui/material";
 
 export default function CardPicture({ picture }) {
@@ -14,7 +14,7 @@ export default function CardPicture({ picture }) {
           <CardMedia
             component="img"
             height="140"
-            image={picture.image}
+            image={`storage/${picture.url}`}
             alt={picture.title}
           />
           <CardContent>

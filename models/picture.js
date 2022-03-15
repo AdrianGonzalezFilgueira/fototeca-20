@@ -22,7 +22,7 @@ const pictureSchema = new Schema({
       "El campo 'Descripción' debe contener como máximo 250 caracteres.",
     ],
   },
-  pictureName: {
+  url: {
     type: String,
     required: true,
   },
