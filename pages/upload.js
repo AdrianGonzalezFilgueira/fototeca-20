@@ -50,7 +50,7 @@ export default function UploadPage() {
             >
               <ButtonUpload register={register} />
             </Grid>
-            <Grid item xs={5}>
+            <Grid item xs={5} container spacing={2} direction="column" py={2}>
               <Grid item>
                 <TextField
                   {...register("title", { minLength: 1, maxLength: 100 })}
@@ -71,9 +71,9 @@ export default function UploadPage() {
                   fullWidth
                 />
               </Grid>
-            </Grid>
-            <Grid container justifyContent="flex-end" item xs={11}>
-              <ButtonSubmit>Enviar</ButtonSubmit>
+              <Grid container justifyContent="flex-end" item pb={2}>
+                <ButtonSubmit>Enviar</ButtonSubmit>
+              </Grid>
             </Grid>
           </Grid>
         </Box>
