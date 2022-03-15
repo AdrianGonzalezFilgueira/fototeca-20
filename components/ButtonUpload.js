@@ -17,7 +17,7 @@ export default function ButtonUpload({ register }) {
         type="file"
       />
       <Button variant="contained" component="span">
-        <AddIcon sx={{ fontSize: 600 }} />
+        <AddIcon sx={{ fontSize: 100 }} />
       </Button>
     </label>
   );

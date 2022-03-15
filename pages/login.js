@@ -1,9 +1,9 @@
-import CardLogin from "../components/CardLogin";
+import CardAuth from "../components/CardAuth";
 
 export default function LoginPage() {
   return (
     <div className="main">
-      <CardLogin />
+      <CardAuth />
     </div>
   );
 }
