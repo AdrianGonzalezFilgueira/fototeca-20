@@ -1,21 +1,18 @@
-import ButtonUpload from "../components/ButtonUpload";
-import TextField from "@mui/material/TextField";
 import { useRef } from "react";
 import { useForm } from "react-hook-form";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
+import { TextField, Box, Grid, Fab } from "@mui/material";
+import Link from "next/link";
+import ButtonUpload from "../components/ButtonUpload";
 import ButtonSubmit from "../components/ButtonSubmit";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import axios from "axios";
 
 export default function UploadPage() {
   const { register, handleSubmit } = useForm();
   const formRef = useRef();
 
-  const onSubmit = async (data) => {
-    const formData = new FormData();
-    formData.append("title", data.title);
-    formData.append("description", data.description);
-    formData.append("picture", data.picture[0]);
+  const onSubmit = async () => {
+    const formData = new FormData(formRef.current);
 
     await axios
       .post("api/pictures", formData)
@@ -41,6 +38,16 @@ export default function UploadPage() {
       <form ref={formRef} onSubmit={handleSubmit(onSubmit)}>
         <Box sx={{ flexGrow: 1 }}>
           <Grid container justifyContent="space-evenly">
+            <Link href="/pictures">
+              <Fab
+                sx={{ padding: "100px", borderRadius: "10px" }}
+                color="primary"
+                aria-label="add"
+              >
+                <ArrowBackIosIcon sx={{ fontSize: 50, color: "white" }} />
+              </Fab>
+            </Link>
+
             <Grid
               item
               xs={5}

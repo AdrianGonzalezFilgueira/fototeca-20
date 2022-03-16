@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { Grid } from "@mui/material";
-import { Box } from "@mui/system";
-import DisplayPictures from "../components/DisplayPictures";
+import { ImageList, Container, Box, Fab } from "@mui/material";
 import axios from "axios";
 import CardPicture from "../components/CardPicture";
+import AddIcon from "@mui/icons-material/Add";
+import Link from "next/link";
 
 export default function PicturesPage() {
   const [pictures, setPictures] = useState([]);
@@ -11,7 +11,7 @@ export default function PicturesPage() {
     const fetchPictures = async () => {
       const result = await axios
         .get("api/pictures")
-        .then((res) => res.data.pictures)
+        .then((res) => res.data)
         .catch((error) => console.log(error));
       setPictures(result);
     };
@@ -20,15 +20,23 @@ export default function PicturesPage() {
   }, []);
 
   return (
-    <div className="mainDiv">
-      <DisplayPictures></DisplayPictures>
-      <Box sx={{ flexGrow: 1 }}>
-        <Grid container justifyContent="space-evenly">
-          {pictures.map((picture, i) => (
-            <CardPicture key={i} picture={picture} />
-          ))}
-        </Grid>
+    <Container maxWidth={false} sx={{ width: "85%" }}>
+      <ImageList gap={12} cols={5}>
+        {pictures.map((picture, i) => (
+          <CardPicture key={i} picture={picture} />
+        ))}
+      </ImageList>
+      <Box sx={{ position: "fixed", right: 35, bottom: 35 }}>
+        <Link href="/upload">
+          <Fab
+            sx={{ padding: "100px", borderRadius: "10px" }}
+            color="primary"
+            aria-label="add"
+          >
+            <AddIcon sx={{ fontSize: "225px" }} />
+          </Fab>
+        </Link>
       </Box>
-    </div>
+    </Container>
   );
 }
