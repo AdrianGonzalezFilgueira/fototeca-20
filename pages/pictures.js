@@ -13,6 +13,7 @@ export default function PicturesPage() {
         .get("api/pictures")
         .then((res) => res.data)
         .catch((error) => console.log(error));
+        console.log(result)
       setPictures(result);
     };
 

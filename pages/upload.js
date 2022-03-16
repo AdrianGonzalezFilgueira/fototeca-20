@@ -13,7 +13,6 @@ export default function UploadPage() {
 
   const onSubmit = async () => {
     const formData = new FormData(formRef.current);
-
     await axios
       .post("api/pictures", formData)
       .then((res) => {
