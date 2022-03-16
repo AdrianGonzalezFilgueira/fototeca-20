@@ -11,12 +11,9 @@ export default function UploadPage() {
   const { register, handleSubmit } = useForm();
   const formRef = useRef();
 
-  const onSubmit = async (data) => {
-    const formData = new FormData();
-    formData.append("title", data.title);
-    formData.append("description", data.description);
-    formData.append("picture", data.picture[0]);
-
+  const onSubmit = async () => {
+    const formData = new FormData(formRef.current);
+    
     await axios
       .post("api/pictures", formData)
       .then((res) => {

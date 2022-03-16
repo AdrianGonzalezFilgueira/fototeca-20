@@ -11,8 +11,9 @@ export default function PicturesPage() {
     const fetchPictures = async () => {
       const result = await axios
         .get("api/pictures")
-        .then((res) => res.data.pictures)
+        .then((res) => res.data)
         .catch((error) => console.log(error));
+        console.log(result)
       setPictures(result);
     };
 
