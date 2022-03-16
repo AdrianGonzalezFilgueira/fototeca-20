@@ -14,7 +14,7 @@ export default handler
     try {
       await dbConnect();
       const pictures = await Picture.find();
-      res.status(200).json({ pictures });
+      res.status(200).json(pictures);
     } catch (error) {
       res.status(400).json({ error });
     }
