@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { TextField, Box, Grid, Fab } from "@mui/material";
 import Link from "next/link";
@@ -10,6 +10,8 @@ import axios from "axios";
 export default function UploadPage() {
   const { register, handleSubmit } = useForm();
   const formRef = useRef();
+  const [showPreview, setShowPreview] = useState(false);
+  console.log(formRef.current);
 
   const onSubmit = async () => {
     const formData = new FormData(formRef.current);
@@ -30,6 +32,14 @@ export default function UploadPage() {
          */
         console.log(error.response.data.message);
       });
+  };
+
+  const handleShowPreview = () => {
+    setShowPreview(!showPreview);
+  };
+
+  const handleOnChange = (e) => {
+    console.log(e.target.files[0]);
   };
 
   return (
@@ -54,7 +64,12 @@ export default function UploadPage() {
               justifyContent="center"
               alignItems="center"
             >
-              <ButtonUpload register={register} />
+              {showPreview ? (
+                <div>True</div>
+              ) : (
+                <ButtonUpload register={register} onChange={handleOnChange} />
+              )}
+              <button onClick={handleShowPreview}>Show Preview</button>
             </Grid>
             <Grid item xs={5} container spacing={2} direction="column" py={2}>
               <Grid item>

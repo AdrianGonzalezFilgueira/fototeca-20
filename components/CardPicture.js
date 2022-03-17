@@ -3,6 +3,7 @@ import InfoIcon from "@mui/icons-material/Info";
 import * as React from "react";
 import { styled, Box, maxHeight } from "@mui/system";
 import ModalUnstyled from "@mui/base/ModalUnstyled";
+import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 
 const StyledModal = styled(ModalUnstyled)`
   position: fixed;
@@ -60,16 +61,18 @@ export default function CardPicture({ picture }) {
       >
         <Container maxWidth="sm" sx={style}>
           <Box sx={{ maxHeight: "500px" }}>
-            <img
-              style={{
-                objectFit: "contain",
-                width: "100%",
-                height: "100%",
-              }}
-              src={`storage/${picture.url}`}
-              alt={picture.title}
-              loading="lazy"
-            />
+            <AspectRatio.Root ratio={16 / 9}>
+              <img
+                style={{
+                  objectFit: "cover",
+                  width: "100%",
+                  height: "100%",
+                }}
+                src={`storage/${picture.url}`}
+                alt={picture.title}
+                loading="lazy"
+              />
+            </AspectRatio.Root>
           </Box>
           <h2 id="unstyled-modal-title">{picture.title}</h2>
           <p id="unstyled-modal-description">{picture.description}</p>
