@@ -1,9 +1,9 @@
-import { ImageListItem, ImageListItemBar, Container } from "@mui/material";
-import InfoIcon from "@mui/icons-material/Info";
+import { ImageListItem, ImageListItemBar, Container, Typography } from "@mui/material";
 import * as React from "react";
-import { styled, Box, maxHeight } from "@mui/system";
+import { styled, Box} from "@mui/system";
 import ModalUnstyled from "@mui/base/ModalUnstyled";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
+import { format } from "date-fns";
 
 const StyledModal = styled(ModalUnstyled)`
   position: fixed;
@@ -74,8 +74,20 @@ export default function CardPicture({ picture }) {
               />
             </AspectRatio.Root>
           </Box>
-          <h2 id="unstyled-modal-title">{picture.title}</h2>
-          <p id="unstyled-modal-description">{picture.description}</p>
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Typography id="unstyled-modal-title" variant="h5">
+              {picture.title}
+            </Typography>
+            <Typography variant="subtitle1">
+              {format(Date.parse(picture.createdAt), "dd/MM/yyyy")}
+            </Typography>
+          </Box>
+
+          <Typography variant="body1">{picture.description}</Typography>
         </Container>
       </StyledModal>
     </>
