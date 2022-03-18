@@ -16,6 +16,7 @@ export default function UploadPage() {
   const formRef = useRef();
   const [showPreview, setShowPreview] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
   const router = useRouter();
 
 
@@ -28,7 +29,9 @@ export default function UploadPage() {
       .then((res) => {
         
         setShowFeedback(true)
-        router.push ('/pictures')
+        setIsDisabled(true)
+        setTimeout(() =>{router.push ('/pictures')}, 3000)
+        
 
         console.log(res.data.message);
       })
@@ -111,10 +114,10 @@ export default function UploadPage() {
 
               </Grid>
               <Grid container justifyContent="flex-end" item pb={2}>
-                <ButtonSubmit>Enviar</ButtonSubmit>
+                <ButtonSubmit disabled={isDisabled}>Enviar</ButtonSubmit>
               </Grid>
             </Grid>
-            <FeedbackMessage showFeedback={showFeedback} />
+            {showFeedback && <FeedbackMessage  />}
           </Grid>
         </Box>
       </form>
