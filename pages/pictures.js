@@ -1,29 +1,20 @@
-import { useState, useEffect } from "react";
-import { ImageList, Container, Box, Fab } from "@mui/material";
-import axios from "axios";
+import { ImageList, Container, Box, Fab, CircularProgress } from "@mui/material";
 import CardPicture from "../components/CardPicture";
 import AddIcon from "@mui/icons-material/Add";
 import Link from "next/link";
+import useSWR from 'swr';
 
 export default function PicturesPage() {
-  const [pictures, setPictures] = useState([]);
-  useEffect(() => {
-    const fetchPictures = async () => {
-      const result = await axios
-        .get("api/pictures")
-        .then((res) => res.data)
-        .catch((error) => console.log(error));
-        console.log(result)
-      setPictures(result);
-    };
+  const fetcher = url => fetch(url).then(r => r.json())
+  const { data, error } = useSWR('/api/pictures', fetcher)
 
-    fetchPictures();
-  }, []);
+  if (error) return <div>failed to load</div>
+  if (!data) return (<div><CircularProgress /></div>) //HAY QUE EXTRAER EN COMPONENTE
 
   return (
     <Container maxWidth={false} sx={{ width: "85%" }}>
       <ImageList gap={12} cols={5}>
-        {pictures.map((picture, i) => (
+        {data.map((picture, i) => (
           <CardPicture key={i} picture={picture} />
         ))}
       </ImageList>
