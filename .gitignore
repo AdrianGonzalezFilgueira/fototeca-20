@@ -36,3 +36,6 @@ yarn-error.log*
 
 # storage for pictures
 /public/storage
+
+# custom settings
+/.vscode/

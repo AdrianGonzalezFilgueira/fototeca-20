@@ -1,43 +1,42 @@
 import { Alert, IconButton, Snackbar } from "@mui/material";
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
 
-
 export default function FeedbackMessage() {
+  const [open, setOpen] = useState(true);
+  console.log(open);
 
-    const [open, setOpen] = useState(true);
-    console.log(open);
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
 
-    const handleClose = (event, reason) => {
-        if (reason === 'clickaway') {
-          return;
-        }
-    
-        setOpen(false);
-      };
+    setOpen(false);
+  };
 
-    const action = (
-        <>
-          <IconButton
-            size="small"
-            aria-label="close"
-            color="inherit"
-            onClick={handleClose}
-          >
-            <CloseIcon fontSize="small" />
-          </IconButton>
-        </>
-      );
+  const action = (
+    <>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleClose}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </>
+  );
 
-    return(
-        <Snackbar
-        open={open}
-        autoHideDuration={6000}
-        onClose={handleClose}
-        action={action}>
-            <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-                Imagen Subida Correctamente
-            </Alert>
-        </Snackbar>
-    )
+  return (
+    <Snackbar
+      open={open}
+      autoHideDuration={6000}
+      onClose={handleClose}
+      action={action}
+    >
+      <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
+        Imagen Subida Correctamente
+      </Alert>
+    </Snackbar>
+  );
 }

@@ -1,6 +1,11 @@
-import { ImageListItem, ImageListItemBar, Container, Typography } from "@mui/material";
+import {
+  ImageListItem,
+  ImageListItemBar,
+  Container,
+  Typography,
+} from "@mui/material";
 import * as React from "react";
-import { styled, Box} from "@mui/system";
+import { styled, Box } from "@mui/system";
 import ModalUnstyled from "@mui/base/ModalUnstyled";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import { format } from "date-fns";
