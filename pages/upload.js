@@ -6,11 +6,19 @@ import ButtonUpload from "../components/ButtonUpload";
 import ButtonSubmit from "../components/ButtonSubmit";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import axios from "axios";
+import ErrorMessage from "../components/ErrorMessage";
+import { useRouter } from "next/router";
+import FeedbackMessage from "../components/Feedback";
+
 
 export default function UploadPage() {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const formRef = useRef();
   const [showPreview, setShowPreview] = useState(false);
+  const [showFeedback, setShowFeedback] = useState(false);
+  const router = useRouter();
+
+
   console.log(formRef.current);
 
   const onSubmit = async () => {
@@ -18,10 +26,10 @@ export default function UploadPage() {
     await axios
       .post("api/pictures", formData)
       .then((res) => {
-        /**
-         * En caso de que todo haya ido bien, informar al usuario.
-         * El mensaje de feedback está en: res.data.message
-         */
+        
+        setShowFeedback(true)
+        router.push ('/pictures')
+
         console.log(res.data.message);
       })
       .catch((error) => {
@@ -33,6 +41,8 @@ export default function UploadPage() {
         console.log(error.response.data.message);
       });
   };
+
+
 
   const handleShowPreview = () => {
     setShowPreview(!showPreview);
@@ -74,16 +84,20 @@ export default function UploadPage() {
             <Grid item xs={5} container spacing={2} direction="column" py={2}>
               <Grid item>
                 <TextField
-                  {...register("title", { minLength: 1, maxLength: 100 })}
-                  id="outlined-basic"
+                  {...register("title", { minLength: 3, maxLength: 100, required: true })}                  id="outlined-basic"
                   label="Título"
                   variant="outlined"
                   fullWidth
                 />
+                {errors.title?.type=== 'required' && <ErrorMessage>Por favor completa este campo</ErrorMessage>}
+                {errors.title?.type=== 'minLength' && <ErrorMessage>Por favor no seas tan bobo</ErrorMessage>}
+                {errors.title?.type=== 'maxLength' && <ErrorMessage>Por favor no seas tan exagerado</ErrorMessage>}
+
+
               </Grid>
               <Grid item>
                 <TextField
-                  {...register("description", { minLength: 1, maxLength: 250 })}
+                  {...register("description", { minLength: 3, maxLength: 250, required: true })}
                   id="outlined-multiline-static"
                   label="Descripción"
                   variant="outlined"
@@ -91,11 +105,16 @@ export default function UploadPage() {
                   rows={5}
                   fullWidth
                 />
+                {errors.description?.type=== 'required' && <ErrorMessage>Por favor completa este campo</ErrorMessage>}
+                {errors.description?.type=== 'minLength' && <ErrorMessage>Por favor no seas tan bobo</ErrorMessage>}
+                {errors.description?.type=== 'maxLength' && <ErrorMessage>Por favor no seas tan exagerado</ErrorMessage>}
+
               </Grid>
               <Grid container justifyContent="flex-end" item pb={2}>
                 <ButtonSubmit>Enviar</ButtonSubmit>
               </Grid>
             </Grid>
+            <FeedbackMessage showFeedback={showFeedback} />
           </Grid>
         </Box>
       </form>
