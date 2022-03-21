@@ -3,7 +3,7 @@ import { Box } from "@mui/system";
 
 export default function Footer() {
   return (
-    <footer>
+    <>
       <Divider
         style={{
           backgroundColor: "white",
@@ -14,9 +14,8 @@ export default function Footer() {
       <Box
         gap={5}
         display="flex"
-        alignItems="center"
         justifyContent="center"
-        my={2.5}
+        py={2.5}
         color="white"
       >
         <Typography variant="body2">
@@ -32,6 +31,6 @@ export default function Footer() {
           Política de privacidad y cookies
         </Typography>
       </Box>
-    </footer>
+    </>
   );
 }
