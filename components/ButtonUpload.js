@@ -17,8 +17,15 @@ export default function ButtonUpload({ register, onChange }) {
         type="file"
         onChange={onChange}
       />
-      <Button variant="contained" component="span">
-        <AddIcon sx={{ fontSize: 100 }} />
+      <Button
+        variant="contained"
+        component="span"
+        sx={{
+          backgroundColor: "rgba(255, 255, 255, 20%)",
+          border: "1px solid white",
+        }}
+      >
+        <AddIcon sx={{ fontSize: 200 }} />
       </Button>
     </label>
   );

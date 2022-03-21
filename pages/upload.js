@@ -1,9 +1,10 @@
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import { TextField, Box, Grid, Fab } from "@mui/material";
+import { Box, Grid, Fab } from "@mui/material";
 import Link from "next/link";
 import ButtonUpload from "../components/ButtonUpload";
 import ButtonSubmit from "../components/ButtonSubmit";
+import InputText from "../components/TextInput";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import axios from "axios";
 import ErrorMessage from "../components/ErrorMessage";
@@ -86,16 +87,14 @@ export default function UploadPage() {
             </Grid>
             <Grid item xs={5} container spacing={2} direction="column" py={2}>
               <Grid item>
-                <TextField
+                <InputText
                   {...register("title", {
                     minLength: 3,
                     maxLength: 100,
                     required: true,
                   })}
-                  id="outlined-basic"
-                  label="Título"
-                  variant="outlined"
-                  fullWidth
+                  title="Título"
+                  type="text"
                 />
                 {errors.title?.type === "required" && (
                   <ErrorMessage>Por favor completa este campo</ErrorMessage>
@@ -108,18 +107,15 @@ export default function UploadPage() {
                 )}
               </Grid>
               <Grid item>
-                <TextField
+                <InputText
                   {...register("description", {
                     minLength: 3,
                     maxLength: 250,
                     required: true,
                   })}
-                  id="outlined-multiline-static"
-                  label="Descripción"
-                  variant="outlined"
-                  multiline
+                  //multiline={true}
                   rows={5}
-                  fullWidth
+                  title="Descripción"
                 />
                 {errors.description?.type === "required" && (
                   <ErrorMessage>Por favor completa este campo</ErrorMessage>

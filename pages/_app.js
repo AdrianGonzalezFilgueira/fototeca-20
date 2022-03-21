@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import "../styles/globals.css";
@@ -5,11 +6,15 @@ import "../styles/globals.css";
 export default function MyApp({ Component, pageProps }) {
   return (
     <>
-      <Navbar />
-      <main className="main">
+      <Box>
+        <Navbar />
+      </Box>
+      <Box>
         <Component {...pageProps} />
-      </main>
-      <Footer />
+      </Box>
+      <Box>
+        <Footer />
+      </Box>
     </>
   );
 }
