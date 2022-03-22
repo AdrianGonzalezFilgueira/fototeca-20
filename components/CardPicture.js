@@ -34,12 +34,15 @@ const Backdrop = styled("div")`
 `;
 
 const style = {
-  bgcolor: "gray",
+  bgcolor: "rgba(255, 255, 255, 60%)",
   border: "1px solid white",
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
   borderRadius: "10px",
+  color:"white",
+  paddingTop: "25px",
+  paddingBottom: "25px"
 };
 
 export default function CardPicture({ picture }) {

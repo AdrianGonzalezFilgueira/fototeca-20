@@ -67,17 +67,17 @@ export default function UploadPage() {
   });
 
   return (
-    <div className="mainDiv">
+    <div className="mainDiv" style={{margin: "20px", marginTop: "65px"}}>
       <form ref={formRef} onSubmit={handleSubmit(onSubmit)}>
         <Box sx={{ flexGrow: 1 }}>
           <Grid container justifyContent="space-evenly">
             <Link href="/pictures">
               <Fab
-                sx={{ padding: "100px", borderRadius: "10px" }}
+                sx={{paddingLeft: "20px", borderRadius: "10px", background: "none", boxShadow: "none",}}
                 color="primary"
                 aria-label="add"
               >
-                <ArrowBackIosIcon sx={{ fontSize: 50, color: "white" }} />
+                <ArrowBackIosIcon sx={{ fontSize: 50, color: "white", paddingRight: "25"}} />
               </Fab>
             </Link>
 
@@ -93,7 +93,6 @@ export default function UploadPage() {
               ) : (
                 <ButtonUpload register={register} onChange={handleOnChange} />
               )}
-              <button onClick={handleShowPreview}>Show Preview</button>
             </Grid>
             <Grid item xs={5} container spacing={2} direction="column" py={2}>
               <Grid item>
