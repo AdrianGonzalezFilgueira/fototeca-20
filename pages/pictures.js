@@ -23,20 +23,20 @@ export default function PicturesPage() {
     ); //HAY QUE EXTRAER EN COMPONENTE
 
   return (
-    <Container maxWidth={false} sx={{ width: "85%" }}>
+    <Container maxWidth={false} sx={{ width: "85%", paddingTop: "20px" }}>
       <ImageList gap={12} cols={5}>
         {data.map((picture, i) => (
           <CardPicture key={i} picture={picture} />
         ))}
       </ImageList>
-      <Box sx={{ position: "fixed", right: 35, bottom: 35 }}>
+      <Box sx={{ position: "fixed", right: 35, bottom: 70 }}>
         <Link href="/upload">
           <Fab
-            sx={{ padding: "100px", borderRadius: "10px" }}
+            sx={{ padding: "70px", borderRadius: "10px", border: "1px solid white", backgroundColor: "rgba(255, 255, 255, 20%)" }}
             color="primary"
             aria-label="add"
           >
-            <AddIcon sx={{ fontSize: "225px" }} />
+            <AddIcon sx={{ fontSize: "120px" }} />
           </Fab>
         </Link>
       </Box>
