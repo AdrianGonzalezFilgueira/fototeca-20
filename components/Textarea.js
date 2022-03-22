@@ -1,7 +1,7 @@
 import { InputBase, InputLabel } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-const StyledTextInput = styled(InputBase)({
+const StyledTextarea = styled(InputBase)({
   "& .MuiInputBase-input": {
     borderRadius: 4,
     position: "relative",
@@ -13,7 +13,7 @@ const StyledTextInput = styled(InputBase)({
   },
 });
 
-export default function TextInput({ register, ...props }) {
+export default function Textarea({ register, ...props }) {
   return (
     <div>
       <InputLabel
@@ -23,14 +23,15 @@ export default function TextInput({ register, ...props }) {
       >
         {props.title}
       </InputLabel>
-      <StyledTextInput
-        {...register(props.fieldName, {
-          minLength: props.minLength,
-          maxLength: props.maxLength,
+      <StyledTextarea
+        {...register("description", {
+          minLength: 3,
+          maxLength: 250,
           required: true,
         })}
-        type={props.type}
         fullWidth={props.fullWidth}
+        multiline={props.multiline}
+        rows={props.rows}
       />
     </div>
   );
