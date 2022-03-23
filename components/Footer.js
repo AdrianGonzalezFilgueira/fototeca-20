@@ -12,10 +12,11 @@ export default function Footer() {
         variant="middle"
       />
       <Box
-        gap={5}
+        gap={2.5}
         display="flex"
+        flexWrap="wrap"
         justifyContent="center"
-        py={2.5}
+        p={2.5}
         color="white"
       >
         <Typography variant="body2">

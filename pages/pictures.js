@@ -1,4 +1,11 @@
-import { ImageList, Container, Box, Fab, useMediaQuery } from "@mui/material";
+import {
+  ImageList,
+  Container,
+  Box,
+  Fab,
+  useMediaQuery,
+  Typography,
+} from "@mui/material";
 import CardPicture from "../components/CardPicture";
 import AddIcon from "@mui/icons-material/Add";
 import Link from "next/link";
@@ -19,11 +26,19 @@ export default function PicturesPage() {
 
   return (
     <Container maxWidth={false} sx={{ width: "85%", padding: "20px" }}>
-      <ImageList gap={12} cols={isMobile ? 1 : isLaptop ? 3 : 5}>
-        {data.map((picture, i) => (
-          <CardPicture key={i} picture={picture} />
-        ))}
-      </ImageList>
+      {data.length > 0 ? (
+        <ImageList gap={12} cols={isMobile ? 1 : isLaptop ? 3 : 5}>
+          {data.map((picture, i) => (
+            <CardPicture key={i} picture={picture} />
+          ))}
+        </ImageList>
+      ) : (
+        <Box>
+          <Typography variant="h2" align="center" color="white" fontSize="40px">
+            Parece que no tienes ninguna imagen
+          </Typography>
+        </Box>
+      )}
       <Box sx={{ position: "fixed", right: 35, bottom: 70 }}>
         <Link href="/upload">
           <Fab
