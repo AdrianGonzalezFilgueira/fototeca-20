@@ -1,25 +1,21 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import {
   Box,
   Grid,
   Fab,
-  TextField,
   InputBase,
-  Input,
   InputLabel,
+  Typography,
 } from "@mui/material";
 import Link from "next/link";
 import ButtonUpload from "../components/ButtonUpload";
 import ButtonSubmit from "../components/ButtonSubmit";
-import TextInput from "../components/TextInput";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import axios from "axios";
 import ErrorMessage from "../components/ErrorMessage";
 import { useRouter } from "next/router";
 import FeedbackMessage from "../components/Feedback";
-import Textarea from "../components/Textarea";
-import { styled } from "@mui/system";
 
 export default function UploadPage() {
   const {
@@ -28,13 +24,27 @@ export default function UploadPage() {
     formState: { errors },
   } = useForm();
   const formRef = useRef();
-  const [showPreview, setShowPreview] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [preview, setPreview] = useState(null);
   const [showFeedback, setShowFeedback] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
   const router = useRouter();
 
+  useEffect(() => {
+    if (!selectedFile) {
+      setPreview(undefined);
+      return;
+    }
+
+    const objectUrl = URL.createObjectURL(selectedFile);
+    setPreview(objectUrl);
+
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [selectedFile]);
+
   const onSubmit = async () => {
     const formData = new FormData(formRef.current);
+
     await axios
       .post("api/pictures", formData)
       .then((res) => {
@@ -56,23 +66,17 @@ export default function UploadPage() {
       });
   };
 
-  const handleShowPreview = () => {
-    setShowPreview(!showPreview);
+  const handleOnChange = (e) => {
+    if (!e.target.files || e.target.files.length === 0) {
+      setSelectedFile(undefined);
+      return;
+    }
+
+    // I've kept this example simple by using the first image instead of multiple
+    setSelectedFile(e.target.files[0]);
+
+    console.log(e.target);
   };
-
-  const handleOnChange = () => {};
-
-  const StyledTextInput = styled(InputBase)({
-    "& .MuiInputBase-input": {
-      borderRadius: 4,
-      position: "relative",
-      backgroundColor: "rgba(255, 255, 255, 20%)",
-      border: "1px solid #ced4da",
-      color: "white",
-      fontSize: 16,
-      padding: "10px 12px",
-    },
-  });
 
   return (
     <div className="mainDiv" style={{ margin: "20px", marginTop: "65px" }}>
@@ -88,28 +92,29 @@ export default function UploadPage() {
             </Link>
 
             <Grid
+              container
               item
               xs={5}
-              container
               justifyContent="center"
               alignItems="center"
             >
-              {showPreview ? (
-                <div>True</div>
-              ) : (
-                <ButtonUpload register={register} onChange={handleOnChange} />
-              )}
+              <Box
+                width="500px"
+                height="500px"
+                display="flex"
+                justifyContent="center"
+                border="1px solid #fff"
+                borderRadius={1}
+              >
+                <ButtonUpload
+                  register={register}
+                  onChange={(e) => handleOnChange(e)}
+                />
+                <img src={preview} />
+              </Box>
             </Grid>
             <Grid item xs={5} container spacing={2} direction="column" py={2}>
               <Grid item>
-                {/* <TextInput
-                  register={register}
-                  fullWidth={true}
-                  title="TÍTULO"
-                  minLength={3}
-                  maxLength={100}
-                  fieldName="title"
-                /> */}
                 <InputLabel
                   shrink
                   htmlFor="title"
@@ -138,17 +143,6 @@ export default function UploadPage() {
                 )}
               </Grid>
               <Grid item>
-                {/* <Textarea
-                  register={register}
-                  title="DESCRIPCIÓN"
-                  multiline={true}
-                  fullWidth={true}
-                  rows={5}
-                  minLength={3}
-                  maxLength={100}
-                  fieldName="description"
-                /> */}
-
                 <InputLabel
                   shrink
                   htmlFor="description"

@@ -40,9 +40,9 @@ const style = {
   flexDirection: "column",
   justifyContent: "center",
   borderRadius: "6px",
-  color:"white",
+  color: "white",
   paddingTop: "25px",
-  paddingBottom: "25px"
+  paddingBottom: "25px",
 };
 
 export default function CardPicture({ picture }) {
@@ -68,20 +68,16 @@ export default function CardPicture({ picture }) {
         BackdropComponent={Backdrop}
       >
         <Container maxWidth="sm" sx={style}>
-          <Box sx={{ maxHeight: "500px" }}>
-            <AspectRatio.Root ratio={16 / 9}>
-              <img
-                style={{
-                  objectFit: "cover",
-                  width: "100%",
-                  height: "100%",
-                }}
-                src={`storage/${picture.url}`}
-                alt={picture.title}
-                loading="lazy"
-              />
-            </AspectRatio.Root>
-          </Box>
+          <img
+            style={{
+              objectFit: "contain",
+              width: "100%",
+              height: "100%",
+            }}
+            src={`storage/${picture.url}`}
+            alt={picture.title}
+            loading="lazy"
+          />
           <Box
             display="flex"
             justifyContent="space-between"

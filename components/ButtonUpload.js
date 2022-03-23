@@ -23,11 +23,11 @@ export default function ButtonUpload({ register, onChange }) {
         sx={{
           backgroundColor: "rgba(255, 255, 255, 20%)",
           border: "1px solid white",
-          width: "35vw",
-          height: "35vw"
+          width: "25vw",
+          height: "25vw",
         }}
       >
-        <AddIcon sx={{ fontSize: "35vw", }} />
+        <AddIcon sx={{ fontSize: "25vw" }} />
       </Button>
     </label>
   );
