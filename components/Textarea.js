@@ -4,7 +4,6 @@ import { styled } from "@mui/material/styles";
 const StyledTextarea = styled(InputBase)({
   "& .MuiInputBase-input": {
     borderRadius: 4,
-    position: "relative",
     backgroundColor: "rgba(255, 255, 255, 20%)",
     border: "1px solid #ced4da",
     color: "white",
