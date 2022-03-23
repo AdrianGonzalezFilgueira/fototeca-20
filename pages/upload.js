@@ -67,17 +67,24 @@ export default function UploadPage() {
   });
 
   return (
-    <div className="mainDiv" style={{margin: "20px", marginTop: "65px"}}>
+    <div className="mainDiv" style={{ margin: "20px", marginTop: "65px" }}>
       <form ref={formRef} onSubmit={handleSubmit(onSubmit)}>
         <Box sx={{ flexGrow: 1 }}>
           <Grid container justifyContent="space-evenly">
             <Link href="/pictures">
               <Fab
-                sx={{paddingLeft: "20px", borderRadius: "10px", background: "none", boxShadow: "none",}}
+                sx={{
+                  paddingLeft: "20px",
+                  borderRadius: "10px",
+                  background: "none",
+                  boxShadow: "none",
+                }}
                 color="primary"
                 aria-label="add"
               >
-                <ArrowBackIosIcon sx={{ fontSize: 50, color: "white", paddingRight: "25"}} />
+                <ArrowBackIosIcon
+                  sx={{ fontSize: 50, color: "white", paddingRight: "25" }}
+                />
               </Fab>
             </Link>
 
@@ -117,7 +124,7 @@ export default function UploadPage() {
               <Grid item>
                 <Textarea
                   register={register}
-                  title="DECRIPCIÓN"
+                  title="DESCRIPCIÓN"
                   multiline={true}
                   fullWidth={true}
                   rows={5}
@@ -135,9 +142,7 @@ export default function UploadPage() {
                   <ErrorMessage>Por favor no seas tan exagerado</ErrorMessage>
                 )}
               </Grid>
-              <Grid item>
-                <StyledTextInput multiline fullWidth rows={5} />
-              </Grid>
+
               <Grid container justifyContent="flex-end" item pb={2}>
                 <ButtonSubmit disabled={isDisabled}>Enviar</ButtonSubmit>
               </Grid>
