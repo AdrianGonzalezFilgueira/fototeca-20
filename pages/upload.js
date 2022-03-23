@@ -99,7 +99,7 @@ export default function UploadPage() {
                 <TextInput
                   register={register}
                   fullWidth={true}
-                  title="Título"
+                  title="TÍTULO"
                   minLength={3}
                   maxLength={100}
                   fieldName="title"
@@ -117,7 +117,7 @@ export default function UploadPage() {
               <Grid item>
                 <Textarea
                   register={register}
-                  title="Descripción"
+                  title="DECRIPCIÓN"
                   multiline={true}
                   fullWidth={true}
                   rows={5}

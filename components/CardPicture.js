@@ -29,17 +29,17 @@ const Backdrop = styled("div")`
   bottom: 0;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
   -webkit-tap-highlight-color: transparent;
 `;
 
 const style = {
-  bgcolor: "rgba(255, 255, 255, 60%)",
+  bgcolor: "rgba(255, 255, 255, 35%)",
   border: "1px solid white",
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-  borderRadius: "10px",
+  borderRadius: "6px",
   color:"white",
   paddingTop: "25px",
   paddingBottom: "25px"

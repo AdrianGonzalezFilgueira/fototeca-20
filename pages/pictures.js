@@ -23,7 +23,7 @@ export default function PicturesPage() {
     ); //HAY QUE EXTRAER EN COMPONENTE
 
   return (
-    <Container maxWidth={false} sx={{ width: "85%", paddingTop: "20px" }}>
+    <Container maxWidth={false} sx={{ width: "85%", padding: "20px" }}>
       <ImageList gap={12} cols={5}>
         {data.map((picture, i) => (
           <CardPicture key={i} picture={picture} />
