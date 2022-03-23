@@ -19,7 +19,6 @@ export default function TextInput({ register, ...props }) {
       <InputLabel
         shrink
         htmlFor={props.title}
-        style={{ color: "white", margin: 0 }}
       >
         {props.title}
       </InputLabel>

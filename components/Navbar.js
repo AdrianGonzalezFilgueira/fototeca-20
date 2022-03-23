@@ -6,10 +6,6 @@ export default function Navbar() {
     <>
       <Title />
       <Divider
-        style={{
-          backgroundColor: "white",
-          margin: "0 4%",
-        }}
         variant="middle"
       />
     </>

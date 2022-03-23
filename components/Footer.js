@@ -5,10 +5,6 @@ export default function Footer() {
   return (
     <>
       <Divider
-        style={{
-          backgroundColor: "white",
-          margin: "0 4%",
-        }}
         variant="middle"
       />
       <Box

@@ -9,7 +9,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 const theme = createTheme({
   typography: {
     fontFamily: [
-      // "Red Hat Display",
+      "Red Hat Display",
       "-apple-system",
       "BlinkMacSystemFont",
       '"Segoe UI"',
@@ -42,6 +42,22 @@ const theme = createTheme({
           borderRadius: "10px",
           background: "none",
           boxShadow: "none",
+        },
+      },
+    },
+    MuiDivider: {
+      styleOverrides: {
+        root: {
+          backgroundColor: "white",
+          margin: "0 4%",
+        },
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          color: "green",
+          margin: 20,
         },
       },
     },
