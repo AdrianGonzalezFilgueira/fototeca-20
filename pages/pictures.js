@@ -18,7 +18,7 @@ export default function PicturesPage() {
   if (!data) return <LoadingSpinner />;
 
   return (
-    <Container maxWidth={false} sx={{ width: "85%", paddingTop: "20px" }}>
+    <Container maxWidth={false} sx={{ width: "85%", padding: "20px" }}>
       <ImageList gap={12} cols={isMobile ? 1 : isLaptop ? 3 : 5}>
         {data.map((picture, i) => (
           <CardPicture key={i} picture={picture} />
