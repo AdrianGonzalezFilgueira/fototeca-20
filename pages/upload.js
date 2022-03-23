@@ -1,6 +1,14 @@
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Box, Grid, Fab, TextField, InputBase } from "@mui/material";
+import {
+  Box,
+  Grid,
+  Fab,
+  TextField,
+  InputBase,
+  Input,
+  InputLabel,
+} from "@mui/material";
 import Link from "next/link";
 import ButtonUpload from "../components/ButtonUpload";
 import ButtonSubmit from "../components/ButtonSubmit";
@@ -72,16 +80,7 @@ export default function UploadPage() {
         <Box sx={{ flexGrow: 1 }}>
           <Grid container justifyContent="space-evenly">
             <Link href="/pictures">
-              <Fab
-                sx={{
-                  paddingLeft: "20px",
-                  borderRadius: "10px",
-                  background: "none",
-                  boxShadow: "none",
-                }}
-                color="primary"
-                aria-label="add"
-              >
+              <Fab color="primary" aria-label="add">
                 <ArrowBackIosIcon
                   sx={{ fontSize: 50, color: "white", paddingRight: "25" }}
                 />
@@ -103,14 +102,31 @@ export default function UploadPage() {
             </Grid>
             <Grid item xs={5} container spacing={2} direction="column" py={2}>
               <Grid item>
-                <TextInput
+                {/* <TextInput
                   register={register}
                   fullWidth={true}
                   title="TÍTULO"
                   minLength={3}
                   maxLength={100}
                   fieldName="title"
+                /> */}
+                <InputLabel
+                  shrink
+                  htmlFor="title"
+                  style={{ color: "white", margin: 0 }}
+                >
+                  TÍTULO
+                </InputLabel>
+                <InputBase
+                  id="title"
+                  fullWidth
+                  {...register("title", {
+                    minLength: 3,
+                    maxLength: 100,
+                    required: true,
+                  })}
                 />
+
                 {errors.title?.type === "required" && (
                   <ErrorMessage>Por favor completa este campo</ErrorMessage>
                 )}
@@ -122,7 +138,7 @@ export default function UploadPage() {
                 )}
               </Grid>
               <Grid item>
-                <Textarea
+                {/* <Textarea
                   register={register}
                   title="DESCRIPCIÓN"
                   multiline={true}
@@ -131,6 +147,25 @@ export default function UploadPage() {
                   minLength={3}
                   maxLength={100}
                   fieldName="description"
+                /> */}
+
+                <InputLabel
+                  shrink
+                  htmlFor="description"
+                  style={{ color: "white", margin: 0 }}
+                >
+                  DESCRIPCIÓN
+                </InputLabel>
+                <InputBase
+                  id="description"
+                  {...register("description", {
+                    minLength: 3,
+                    maxLength: 250,
+                    required: true,
+                  })}
+                  rows={5}
+                  multiline
+                  fullWidth
                 />
                 {errors.description?.type === "required" && (
                   <ErrorMessage>Por favor completa este campo</ErrorMessage>

@@ -44,9 +44,8 @@ export default function PicturesPage() {
           <Fab
             sx={{
               padding: "70px",
-              borderRadius: "10px",
-              border: "1px solid white",
               backgroundColor: "rgba(255, 255, 255, 20%)",
+              border: "1px solid white",
             }}
             color="primary"
             aria-label="add"
