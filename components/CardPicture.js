@@ -3,6 +3,7 @@ import {
   ImageListItemBar,
   Container,
   Typography,
+  Divider,
 } from "@mui/material";
 import * as React from "react";
 import { styled, Box } from "@mui/system";
@@ -33,15 +34,13 @@ const Backdrop = styled("div")`
 `;
 
 const style = {
-  background: "rgba(0, 0, 0, 0.5)",
-  border: "1px solid white",
+  background: "rgba(0, 0, 0, 0.6)",
+  border: "3px solid white",
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
   borderRadius: "6px",
   color: "white",
-  paddingTop: "25px",
-  paddingBottom: "25px",
 };
 
 export default function CardPicture({ picture }) {
@@ -66,31 +65,62 @@ export default function CardPicture({ picture }) {
         onClose={handleClose}
         BackdropComponent={Backdrop}
       >
-        <Container maxWidth="sm" sx={style}>
+        <Container disableGutters maxWidth="sm" sx={style}>
           <img
             style={{
               objectFit: "contain",
               width: "100%",
               height: "100%",
+              borderRadius: "3px 3px 1px 1px",
             }}
             src={`storage/${picture.url}`}
             alt={picture.title}
             loading="lazy"
           />
           <Box
+            p="15px"
             display="flex"
             justifyContent="space-between"
             alignItems="center"
           >
-            <Typography id="unstyled-modal-title" variant="h5">
+            <Typography
+              sx={{ wordBreak: "break-all" }}
+              id="unstyled-modal-title"
+              variant="h4"
+            >
               {picture.title}
             </Typography>
-            <Typography variant="subtitle1">
+            <Typography alignSelf="flex-start" variant="subtitle1">
               {format(Date.parse(picture.createdAt), "dd/MM/yyyy")}
             </Typography>
           </Box>
+          <Typography sx={{ wordBreak: "break-all", p: "15px" }} variant="h5">
+            {picture.description}
+          </Typography>
 
-          <Typography variant="body1">{picture.description}</Typography>
+          <Box marginBottom={2}>
+            <Typography
+              component="a"
+              href={`storage/${picture.url}`}
+              sx={{
+                wordBreak: "break-all",
+                cursor: "pointer",
+                marginRight: "15px",
+                paddingBottom: "2.5px",
+                display: "flex",
+                justifyContent: "flex-end",
+                ":hover": {
+                  borderBottom: "2px solid white",
+                  color: "Grey",
+                  marginLeft: "85%",
+                },
+              }}
+              variant="subtitle1"
+              download
+            >
+              Descargar
+            </Typography>
+          </Box>
         </Container>
       </StyledModal>
     </>
