@@ -1,18 +1,7 @@
-import { Box } from "@mui/material";
+import ErrorPages from "../components/ErrorPages";
 
-export default function Custom404() {
+export default function Custom500() {
   return (
-    <Box
-      sx={{
-        textAlign: "center",
-        color: "#fff",
-        display: "flex",
-        alignItems: "center",
-        flexDirection: "column"
-      }}
-    >
-      <img width="500" height="300" src="images/500.svg" />
-      <h2>Lo sentimos. Existe un error en el servidor.</h2>
-    </Box>
+    <ErrorPages image="500.svg">500 - Server-side error occurred</ErrorPages>
   );
 }
