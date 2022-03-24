@@ -7,7 +7,6 @@ import {
 import * as React from "react";
 import { styled, Box } from "@mui/system";
 import ModalUnstyled from "@mui/base/ModalUnstyled";
-import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 import { format } from "date-fns";
 
 const StyledModal = styled(ModalUnstyled)`
@@ -34,7 +33,7 @@ const Backdrop = styled("div")`
 `;
 
 const style = {
-  bgcolor: "rgba(255, 255, 255, 35%)",
+  background: "rgba(0, 0, 0, 0.5)",
   border: "1px solid white",
   display: "flex",
   flexDirection: "column",

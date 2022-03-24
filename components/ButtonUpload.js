@@ -6,7 +6,14 @@ const Input = styled("input")({
   display: "none",
 });
 
-export default function ButtonUpload({ register, onChange }) {
+export default function ButtonUpload({ register, fileImage, onChange }) {
+  const styles = {
+    maxHeight: "500px",
+    maxWidth: "500px",
+    minHeight: "100px",
+    minWidth: "100px",
+  };
+
   return (
     <label htmlFor="contained-button-file">
       <Input
@@ -23,11 +30,14 @@ export default function ButtonUpload({ register, onChange }) {
         sx={{
           backgroundColor: "rgba(255, 255, 255, 20%)",
           border: "1px solid white",
-          width: "25vw",
-          height: "25vw",
+          padding: 0,
         }}
       >
-        <AddIcon sx={{ fontSize: "25vw" }} />
+        {fileImage ? (
+          <img style={styles} src={fileImage} />
+        ) : (
+          <AddIcon sx={{ fontSize: "25vw" }} />
+        )}
       </Button>
     </label>
   );

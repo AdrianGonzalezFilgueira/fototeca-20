@@ -4,7 +4,6 @@ import { useState } from "react";
 
 export default function FeedbackMessage() {
   const [open, setOpen] = useState(true);
-  console.log(open);
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {

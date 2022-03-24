@@ -72,14 +72,11 @@ export default function UploadPage() {
       return;
     }
 
-    // I've kept this example simple by using the first image instead of multiple
     setSelectedFile(e.target.files[0]);
-
-    console.log(e.target);
   };
 
   return (
-    <div className="mainDiv" style={{ margin: "20px", marginTop: "65px" }}>
+    <div className="mainDiv" style={{ margin: "20px" }}>
       <form ref={formRef} onSubmit={handleSubmit(onSubmit)}>
         <Box sx={{ flexGrow: 1 }}>
           <Grid container justifyContent="space-evenly">
@@ -98,20 +95,11 @@ export default function UploadPage() {
               justifyContent="center"
               alignItems="center"
             >
-              <Box
-                width="500px"
-                height="500px"
-                display="flex"
-                justifyContent="center"
-                border="1px solid #fff"
-                borderRadius={1}
-              >
-                <ButtonUpload
-                  register={register}
-                  onChange={(e) => handleOnChange(e)}
-                />
-                <img src={preview} />
-              </Box>
+              <ButtonUpload
+                register={register}
+                fileImage={preview}
+                onChange={(e) => handleOnChange(e)}
+              />
             </Grid>
             <Grid item xs={5} container spacing={2} direction="column" py={2}>
               <Grid item>
