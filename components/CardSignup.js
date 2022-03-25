@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form";
 import ButtonSubmit from "./ButtonSubmit";
-import InputText from "./TextInput";
 
 export default function CardSignup() {
   const {

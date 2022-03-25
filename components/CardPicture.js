@@ -33,13 +33,14 @@ const Backdrop = styled("div")`
 `;
 
 const style = {
-  background: "rgba(0, 0, 0, 0.5)",
-  border: "1px solid white",
+  background: "rgba(255, 255, 255)",
+  //border: "1px solid white",
+  borderBottom: '6px solid rgba(255, 0, 188, 0.8)',
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
   borderRadius: "6px",
-  color: "white",
+  color: "black",
   paddingTop: "25px",
   paddingBottom: "25px",
 };
@@ -81,16 +82,17 @@ export default function CardPicture({ picture }) {
             display="flex"
             justifyContent="space-between"
             alignItems="center"
+            paddingTop="10px"
           >
-            <Typography id="unstyled-modal-title" variant="h5">
+            <Typography id="unstyled-modal-title" variant="h5" fontWeight={600}>
               {picture.title}
             </Typography>
-            <Typography variant="subtitle1">
+            <Typography variant="subtitle1" fontWeight={700}>
               {format(Date.parse(picture.createdAt), "dd/MM/yyyy")}
             </Typography>
           </Box>
 
-          <Typography variant="body1">{picture.description}</Typography>
+          <Typography variant="body1" fontWeight={600}>{picture.description}</Typography>
         </Container>
       </StyledModal>
     </>

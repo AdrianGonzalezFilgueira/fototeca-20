@@ -5,6 +5,7 @@ import "../styles/globals.css";
 import Head from "next/head";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import { width } from "@mui/system";
 
 const theme = createTheme({
   typography: {
@@ -56,8 +57,39 @@ const theme = createTheme({
     MuiInputLabel: {
       styleOverrides: {
         root: {
-          color: "green",
           margin: 20,
+          letterSpacing: 4,
+          textShadow: '0px 2px 2px rgba(0, 0, 0, 0.5)',
+        },
+      },
+    },
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          //textShadow: '0px 2px 2px rgba(0, 0, 0, 0.5)',
+        },
+      },
+    },
+    MuiImageListItemBar: {
+      styleOverrides: {
+        root: {
+          //opacity: 0,
+          //':hover': {
+            //opacity: 1,
+            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+            borderTopRightRadius: '10px',
+            borderBottomRightRadius: '10px',
+            borderLeft: '6px solid rgba(255, 0, 188, 0.8)',
+            //width: 'fit-content',
+            marginBottom: '10px',
+            marginRight: '70px',
+            textOverflow: 'ellipsis',
+            overflow: 'hidden',
+          //},
+        },
+        title: {
+          color: 'black',
+          fontWeight: 700,
         },
       },
     },
