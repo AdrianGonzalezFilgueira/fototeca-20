@@ -33,7 +33,7 @@ export default function FeedbackMessage() {
       onClose={handleClose}
       action={action}
     >
-      <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
+      <Alert onClose={handleClose} severity="success">
         Imagen Subida Correctamente
       </Alert>
     </Snackbar>

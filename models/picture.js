@@ -6,8 +6,8 @@ const pictureSchema = new Schema({
     required: [true, "El campo 'Título' es requerido."],
     minlength: [3, "El campo 'Título' debe contener al menos 3 caracteres."],
     maxlength: [
-      100,
-      "El campo 'Título' debe contener como máximo 100 caracteres.",
+      50,
+      "El campo 'Título' debe contener como máximo 50 caracteres.",
     ],
   },
   description: {
@@ -18,8 +18,8 @@ const pictureSchema = new Schema({
       "El campo 'Descripción' debe contener al menos 3 caracteres.",
     ],
     maxlength: [
-      250,
-      "El campo 'Descripción' debe contener como máximo 250 caracteres.",
+      150,
+      "El campo 'Descripción' debe contener como máximo 150 caracteres.",
     ],
   },
   url: {

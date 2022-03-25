@@ -1,13 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
-import {
-  Box,
-  Grid,
-  Fab,
-  InputBase,
-  InputLabel,
-  Typography,
-} from "@mui/material";
+import { Box, Grid, Fab, InputBase, InputLabel } from "@mui/material";
 import Link from "next/link";
 import ButtonUpload from "../components/ButtonUpload";
 import ButtonSubmit from "../components/ButtonSubmit";
@@ -115,7 +108,7 @@ export default function UploadPage() {
                   fullWidth
                   {...register("title", {
                     minLength: 3,
-                    maxLength: 100,
+                    maxLength: 50,
                     required: true,
                   })}
                 />
@@ -142,7 +135,7 @@ export default function UploadPage() {
                   id="description"
                   {...register("description", {
                     minLength: 3,
-                    maxLength: 250,
+                    maxLength: 150,
                     required: true,
                   })}
                   rows={5}
