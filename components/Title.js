@@ -3,8 +3,8 @@ import { Typography } from "@mui/material";
 export default function Title() {
   return (
     <Typography
-      padding="30px"
-      fontSize="64px"
+      padding="10px"
+      fontSize="50px"
       color={"white"}
       align="center"
       variant="h1"
